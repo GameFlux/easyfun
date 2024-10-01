@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 
-const nggUrl = 'https://www.easyfun.gg/games';
+const nggUrl = 'https://www.easyfun.gg/';
 
 const proxy = createProxyMiddleware({
   target: nggUrl,
@@ -11,7 +11,7 @@ const proxy = createProxyMiddleware({
   secure: true,
   logLevel: 'debug',
   router: function(req) {
-    if (req.headers.host === 'www.easyfun.ggl') {
+    if (req.headers.host === 'www.easyfun.gg/') {
       req.headers['X-Forwarded-For'] = ''; 
       req.headers['X-Real-IP'] = '';
       req.headers['Via'] = '';
